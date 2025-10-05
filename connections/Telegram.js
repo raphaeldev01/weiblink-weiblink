@@ -9,7 +9,13 @@ const staffs = [
 const SendNewProject = ({email, name, tell, plan, type }) => {
 
     console.log("aqui5")
-    const Bot = new telegramBot(apiKey)
+    const Bot = new telegramBot(apiKey, {
+        polling: true, // or webhook: { ... }
+        request: {
+            agentOptions: {
+                family: 4 // Force IPv4
+            }
+        }})
 
 
     const msg = `📩 Novo formulário recebido!
