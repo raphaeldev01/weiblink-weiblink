@@ -10,6 +10,9 @@ const staffs = [
 
 const SendNewProject = ({email, name, tell, plan, type }) => {
 
+    console.log("aqui5")
+    
+
     const msg = `📩 Novo formulário recebido!
 
 👤 Nome: ${name}
