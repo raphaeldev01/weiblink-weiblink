@@ -2,6 +2,14 @@ const apiKey = "7863865541:AAFLd6J6sY3HtHNHGocuuMe0jQFlQ4MAteQ"
 
 const telegramBot = require("node-telegram-bot-api")
 
+const Bot = new telegramBot(apiKey, {
+    polling: true, // or webhook: { ... }
+    request: {
+        agentOptions: {
+            family: 4 // Force IPv4
+        }
+    }})
+    
 const staffs = [
     "8052575762", //Raphael
 ]
@@ -9,14 +17,6 @@ const staffs = [
 const SendNewProject = ({email, name, tell, plan, type }) => {
 
     console.log("aqui5")
-    const Bot = new telegramBot(apiKey, {
-        polling: true, // or webhook: { ... }
-        request: {
-            agentOptions: {
-                family: 4 // Force IPv4
-            }
-        }})
-
 
     const msg = `📩 Novo formulário recebido!
 
@@ -25,6 +25,8 @@ const SendNewProject = ({email, name, tell, plan, type }) => {
 📱 Telefone: ${tell}
 💼 Tipo de plano: ${plan}
 🏢 Tipo de cliente: ${type} (Pessoa Física ou Empresa)
+
+📱: https://wa.me/55${tell.replace("(","").replace(") ", "")}
 ` 
 
     console.log(msg);
