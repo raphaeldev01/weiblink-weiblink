@@ -31,7 +31,7 @@ Router.post("/free", (req, res) => {
     if (!name || !mail || !bussinessName || !project || !tel) return res.send(400);
 
 
-    telegram.SendNewOf
+    telegram.SendNewOffer
     fer({
         mail,
         name,
