@@ -5,21 +5,11 @@ const telegram = require("../connections/Telegram")
 
 Router.post("/newProject", (req, res) => {
     
-    console.log("aqui1")
-
     if(!req.body) return
-
-    console.log("aqui2")
-
 
     const { name, email, plan, type, tell } = req.body;
 
-    console.log("aqui3")
-
-
     if (!name || !email || !plan || !type || !tell) return res.send(400);
-
-    console.log("aqui4")
 
 
     telegram.SendNewProject({
@@ -31,6 +21,28 @@ Router.post("/newProject", (req, res) => {
     })
 
     res.send({error: false})
+})
+
+Router.post("/free", (req, res) => {
+    if(!req.body) return
+
+    const { name, mail, bussinessName, project, tel, website } = req.body;
+
+    if (!name || !mail || !bussinessName || !project || !tel) return res.send(400);
+
+
+    telegram.SendNewOf
+    fer({
+        mail,
+        name,
+        tel,
+        bussinessName,
+        project,
+        website
+    })
+
+    res.send({error: false})
+
 })
 
 module.exports = Router
